@@ -76,6 +76,7 @@ def run_ahrd_file(ls):
         j = i.split('/')[-1] + '.yml'
         f0.write('java -Xmx2g -jar %s %s/%s\n'%(ahrd_jar,working_dir,j))
     f0.close()
+
 if __name__ == '__main__':
     file_names = walkdir(query_dir)
     print 'Generating command file of blast...'
