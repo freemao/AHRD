@@ -16,7 +16,7 @@ blastresult_dirs = [
     '/share/Public/cmiao/ahrd/run/blast_result_trembl'
     ]
 part_of_blastresult = ['swissprot', 'tair', 'trembl']
-ahrd_jar='/share/Public/cmiao/ahrd/AHRD/dist/ahrd.jar'
+ahrd_jar = '/share/Public/cmiao/ahrd/AHRD/dist/ahrd.jar'
 
 def walkdir(dirname):
     '''Walk the directory you pointed and \
@@ -24,7 +24,7 @@ save the filenames in this directory to a list.'''
     ls = os.listdir(dirname)
     file_names = []
     for i in ls:
-        j=os.path.join(dirname,i)
+        j = os.path.join(dirname, i)
         file_names.append(j)
     return file_names
 
@@ -32,7 +32,7 @@ def run_blast_file(ls):
     '''ls is query sequence list in which filename is abs path.'''
     f0 = open('blast_commands.txt', 'w')
     for i in ls:
-        j=i.split('/')[-1]
+        j = i.split('/')[-1]
         for d, o, p in zip(database, blastresult_dirs, part_of_blastresult):
             f0.write('blastall -p blastp -i %s -d %s -m 0 -e 0.0001 -v 200 \
 -b 200 -o %s/%s.%s.pairwise\n'%(i, d, o, j, p))
@@ -71,10 +71,10 @@ token_score_bit_score_weight: 0.5\ntoken_score_database_score_weight: \
         f0.close()
 
 def run_ahrd_file(ls):
-    f0 = open('ahrd_commands.txt','w')
+    f0 = open('ahrd_commands.txt', 'w')
     for i in ls:
         j = i.split('/')[-1] + '.yml'
-        f0.write('java -Xmx2g -jar %s %s/%s\n'%(ahrd_jar,working_dir,j))
+        f0.write('java -Xmx2g -jar %s %s/%s\n'%(ahrd_jar, working_dir, j))
     f0.close()
 
 if __name__ == '__main__':
