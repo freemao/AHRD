@@ -3,6 +3,11 @@
 import os
 from subprocess import call
 
+'''
+this is my first a little complex script, which even don't have a function.
+so it is very ugly...
+'''
+
 working_dir = '/share/Public/cmiao/ahrd/run'
 query_dir = '/share/Public/cmiao/ahrd/run/proteins'
 database = [

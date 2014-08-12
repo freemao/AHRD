@@ -5,6 +5,7 @@ from optparse import OptionParser
 msg_usage = 'usage: %prog [-F] fastafile [-S] sequencename [-I] posinterva [-O]\
  outputfile'
 descr ='''This script is used to fetch a part of sequence from a fasta file.
+the coordinate is 1-based.
 '''
 optparser = OptionParser(usage = msg_usage, description = descr)
 optparser.add_option('-F', '--fastafile', dest = 'fafile',
@@ -54,6 +55,3 @@ if __name__ == '__main__':
     i = options.seqiv
     o = options.output
     fetch_fa(f, s, i, o)
-
-
-
