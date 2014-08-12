@@ -1,15 +1,19 @@
 #!/usr/bin/python
-'''
-cause the blast and AHRD limitation of fasta file size
-and if your file too large to run blast
-you'd better to split it to smaller size
-this script is created for spliting the fasta file
-'''
-def fa_split(file,n,*args):
-    '''
-    file:which file you wanna tackle
-    n:sequence number per splitted file
-    '''
+from optparse import OptionParser
+
+msg_usage = 'usage: %prog [-F] fastafile [-N] seqs per splited file'
+descr ='''cause the blast and AHRD limitation of fasta file size
+and if your file too large to run blast you'd better to split it
+to smaller size this script is created for spliting the fasta file
+ '''
+optparser = OptionParser(usage = msg_usage, description = descr)
+optparser.add_option('-F', '--fastafile', dest = 'fafile',
+                      help = 'input the fasta file name.')
+optparser.add_option('-N', '--number', dest = 'seqsperfile',type = 'int',
+                      help = 'how many sequences per file.')
+options, args = optparser.parse_args()
+
+def fa_split(file,n):
     f0=open(file,'r')
     fa=f0.read()
     f1=fa.split('>')
@@ -32,8 +36,10 @@ def fa_split(file,n,*args):
             f3.write('>'+k)
         f3.close()
     f0.close()
-import sys
+
 if __name__=='__main__':
+    f = options.fafile
+    n = options.seqsperfile
     print('running...')
-    fa_split(sys.argv[1],int(sys.argv[2]))
+    fa_split(f, n)
     print ('OK!!! RUN OVER.')
