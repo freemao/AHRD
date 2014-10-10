@@ -22,7 +22,7 @@ def fa_split(file,n):
     s=1
     a=0
     while a+n<=lens-1:
-        f2=open(str(s)+','+str(a+1)+'--'+str(a+n)+'.fasta','a')
+        f2=open(str(s)+'-'+str(a+1)+'--'+str(a+n)+'.fasta','a')
         list1=f1[a:a+n]
         for j in list1:
             f2.write('>'+j)
@@ -31,7 +31,7 @@ def fa_split(file,n):
         s=s+1
     else :
         list2=f1[a:]
-        f3=open(str(s)+','+str(a+1)+'--.fasta','a')
+        f3=open(str(s)+'-'+str(a+1)+'--.fasta','a')
         for k in list2:
             f3.write('>'+k)
         f3.close()
